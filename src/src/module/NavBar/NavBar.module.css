@@ -1,0 +1,27 @@
+.nav{
+    color: #fefefe;
+    height: 4rem;
+    background-color: #404040;
+}
+.navWrap{
+    overflow: hidden;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    font-size: 20px;
+}
+.blocks{
+
+}
+.block{
+    /*padding: 8px 5px ;*/
+}
+.block:hover{
+    background-color: rgba(256,256,256,0.2);
+}

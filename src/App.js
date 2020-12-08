@@ -1,25 +1,53 @@
-import logo from './logo.svg';
 import './App.css';
+import {useRotes} from "./src/routes"
+import {useAuth} from "./src/hooks/auth.hooks";
+import {AuthContext} from './src/context/AuthContext'
+import {BrowserRouter} from "react-router-dom";
+import {createMuiTheme, ThemeProvider} from '@material-ui/core/styles';
+import {ToastProvider} from 'react-toast-notifications';
+import Snack from "./src/toast/snake";
+import NavBar from "./src/module/NavBar/NavBar";
+
+
+const mainTheme = createMuiTheme({
+    palette: {
+        type: 'dark'
+    },
+});
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const {login, logout, token, ready} = useAuth()
+    const isAuthenticated = !!token
+    const routes = useRotes(isAuthenticated)
+
+    if (!ready) {
+        return (
+            <>
+                LOADING...
+            </>
+        )
+    }
+
+    return (
+        <AuthContext.Provider value={{login, logout, token}}>
+            <BrowserRouter>
+                <ThemeProvider theme={mainTheme}>
+                    <ToastProvider
+                        autoDismiss
+                        autoDismissTimeout={3000}
+                        placement="bottom-center"
+                        components={{Toast: Snack}}
+                    >
+                        {isAuthenticated && <NavBar/>}
+
+                        {routes}
+
+                    </ToastProvider>
+                </ThemeProvider>
+            </BrowserRouter>
+        </AuthContext.Provider>
+    )
 }
 
 export default App;

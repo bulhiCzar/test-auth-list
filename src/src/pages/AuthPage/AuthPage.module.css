@@ -1,0 +1,28 @@
+.wrapper {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block {
+    background-color: #404040;
+    padding: 60px;
+    color: #fefefe;
+}
+
+.title {
+    font-size: 26px;
+    text-align: center;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+}
+.inputItem{
+    /*color: #fefefe !important;*/
+    margin: 12px 0 !important;
+    overflow: hidden;
+}
+

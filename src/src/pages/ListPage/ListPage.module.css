@@ -1,0 +1,13 @@
+.wrapper{
+    min-height: calc(100vh - 4rem);
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 0 auto;
+}
+.list{
+    color: #fefefe;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
